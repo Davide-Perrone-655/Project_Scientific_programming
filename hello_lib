@@ -1,0 +1,74 @@
+$$$Vfun1
+import numpy as np
+
+#giusto due funzioni a caso, per fare pratica
+def printer1(testo):
+    print(testo)
+    print('Hai usato correttamente la funzione!')
+    return
+
+
+class Nominativo ():
+    def __init__(self, nome=''):
+        self.name = nome
+
+    @property
+    def name(self):
+        return self.nome1
+
+    @name.setter
+    def name(self, val=''):
+        self.nome1 = val
+
+
+
+$$$real program
+
+from Libprova import Vfun1
+
+print('hello world')
+Vfun1.printer1('hello!')
+
+Caio=Vfun1.Nominativo('Caio 2')
+
+print(Caio.name)
+
+print('Fine!')
+
+
+
+
+$$$uninstall
+
+import os
+import sys
+Installed_files = ['real program.py','Libprova']
+
+#controllo cosa c'è 
+Present_files=set(Installed_files) & set(os.listdir(path='.'))
+
+print('Disinstallazione...')
+
+#Se i file ci sono li tolgo
+if Installed_files[0] in Present_files:
+    os.remove(Installed_files[0])
+    print(Installed_files[0]+' rimosso')
+if Installed_files[1] in Present_files:
+    os.chdir('./' + Installed_files[1])
+
+    #tolgo anche la cache, per completezza
+    if '__pycache__' in os.listdir(path='.'):
+        os.chdir('./__pycache__')
+        for i in os.listdir(path='.'):
+            os.remove(i)
+        os.chdir('..')
+        os.removedirs('__pycache__')
+    for i in os.listdir(path='.'):
+        os.remove(i)
+    os.chdir('..')
+    os.removedirs(Installed_files[1])
+    print(Installed_files[1]+' rimosso')
+
+
+#elimino il file stesso per la Disinstallazione
+os.remove(sys.argv[0])
